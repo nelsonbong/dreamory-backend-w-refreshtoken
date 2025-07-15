@@ -3,10 +3,10 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
-import userRoutes from './routes/user.routes';
-import eventRoutes from './routes/event.routes';
-import publicEventRoutes from './routes/publicEvent.routes';
-import sessionRoutes from './routes/session.routes';
+import userRoutes from './routes/user.routes';                //Register & Login
+import eventRoutes from './routes/event.routes';              //Protected events routes
+import publicEventRoutes from './routes/publicEvent.routes';  //Public events routes
+import sessionRoutes from './routes/session.routes';          //Refresh token & Clear cookies
 
 import prisma from './config/prisma';
 
@@ -23,9 +23,9 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use('/auth', userRoutes);                   // for login/register
-app.use('/session', sessionRoutes);             // for refresh-token and logout
 app.use('/events', eventRoutes);                // for protected routes
 app.use('/public-events', publicEventRoutes);
+app.use('/session', sessionRoutes);             // for refresh-token and logout
 
 app.get('/', async (req, res) => {
   try {
