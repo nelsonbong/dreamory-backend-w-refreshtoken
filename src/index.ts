@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 import userRoutes from './routes/user.routes';
 import eventRoutes from './routes/event.routes';
 import publicEventRoutes from './routes/publicEvent.routes';
-import sessionRoutes from './routes/session.routes'; // 👈 import remains the same
+import sessionRoutes from './routes/session.routes';
 
 import prisma from './config/prisma';
 
@@ -22,9 +22,9 @@ app.use(cors({
 app.use(cookieParser());
 app.use(express.json());
 
-app.use('/auth', userRoutes);             // for login/register
-app.use('/session', sessionRoutes);          // for refresh-token and logout
-app.use('/events', eventRoutes);
+app.use('/auth', userRoutes);                   // for login/register
+app.use('/session', sessionRoutes);             // for refresh-token and logout
+app.use('/events', eventRoutes);                // for protected routes
 app.use('/public-events', publicEventRoutes);
 
 app.get('/', async (req, res) => {

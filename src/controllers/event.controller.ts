@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import prisma from '../config/prisma';
 import cloudinary from '../config/cloudinary';
-import bcrypt from 'bcryptjs'; // ✅ for password check
+import bcrypt from 'bcryptjs';
 
 // ✅ Create Event
 export const createEvent = async (req: Request, res: Response) => {
